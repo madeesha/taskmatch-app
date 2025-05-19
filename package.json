@@ -1,7 +1,7 @@
 {
   "name": "taskmatch-app",
   "version": "0.1.0",
-  "homepage": "https://madeesha.github.io/your-repo",
+  "homepage": "https://madeesha.github.io/taskmatch-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
