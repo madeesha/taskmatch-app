@@ -3,14 +3,18 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#00D4AA', // TaskMatch green
-      light: '#4FDCC3',
+      main: '#10B981', // TaskMatch green
+      light: '#097A55',
       dark: '#00B894',
+      black: '#000000'
     },
     secondary: {
       main: '#2D3748',
       light: '#4A5568',
       dark: '#1A202C',
+    },
+    title: {
+       text: '#097A55', /* Adjust colors as needed */
     },
     background: {
       default: '#F7FAFC',

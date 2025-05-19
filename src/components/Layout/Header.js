@@ -25,13 +25,13 @@ const Header = () => {
         <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
           {/* Logo */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <MenuIcon sx={{ color: theme.palette.primary.main, mr: 1 }} />
+            <MenuIcon sx={{ color: theme.palette.title.text, mr: 1 }} />
             <Typography
               variant="h5"
               component="div"
               sx={{
                 fontWeight: 700,
-                color: theme.palette.primary.main,
+                color: theme.palette.title.text,
                 fontSize: '1.75rem',
               }}
             >
@@ -40,54 +40,61 @@ const Header = () => {
           </Box>
 
           {/* Navigation Links */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
-            <Button
-              startIcon={<AddIcon />}
-              sx={{
-                color: theme.palette.text.primary,
-                textTransform: 'none',
-                fontWeight: 500,
-              }}
-            >
-              Post a Task
-            </Button>
-            <Button
-              startIcon={<PersonIcon />}
-              sx={{
-                color: theme.palette.text.primary,
-                textTransform: 'none',
-                fontWeight: 500,
-              }}
-            >
-              Register as Tasker
-            </Button>
-            <Button
-              startIcon={<SearchIcon />}
-              sx={{
-                color: theme.palette.text.primary,
-                textTransform: 'none',
-                fontWeight: 500,
-              }}
-            >
-              Browse Tasks
-            </Button>
-            <Button
-              startIcon={<HelpIcon />}
-              sx={{
-                color: theme.palette.text.primary,
-                textTransform: 'none',
-                fontWeight: 500,
-              }}
-            >
-              How it Works
-            </Button>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+              <Button
+                sx={{
+                    textTransform: 'none',
+                    fontWeight: 500,
+                }}
+                startIcon={
+                    <AddIcon sx={{ color: theme.palette.title.text }} />
+                }
+                >
+                <span style={{ color: theme.palette.primary.black }}>Post a Task</span>
+                </Button>
+
+                <Button
+                sx={{
+                    textTransform: 'none',
+                    fontWeight: 500,
+                }}
+                startIcon={
+                    <PersonIcon sx={{ color: theme.palette.title.text }} />
+                }
+                >
+                <span style={{ color: theme.palette.primary.black }}>Register as Tasker</span>
+                </Button>
+
+                <Button
+                sx={{
+                    textTransform: 'none',
+                    fontWeight: 500,
+                }}
+                startIcon={
+                    <SearchIcon sx={{ color: theme.palette.title.text }} />
+                }
+                >
+                <span style={{ color: theme.palette.primary.black }}>Browse Tasks</span>
+                </Button>
+
+                <Button
+                sx={{
+                    textTransform: 'none',
+                    fontWeight: 500,
+                }}
+                startIcon={
+                    <HelpIcon sx={{ color: theme.palette.title.text }} />
+                }
+                >
+                <span style={{ color: theme.palette.primary.black }}>How it Works</span>
+                </Button>
           </Box>
 
           {/* Auth Buttons */}
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Button
               sx={{
-                color: theme.palette.text.primary,
+                color: theme.palette.title.text,
                 textTransform: 'none',
                 fontWeight: 500,
               }}

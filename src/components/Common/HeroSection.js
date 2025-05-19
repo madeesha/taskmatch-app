@@ -8,14 +8,14 @@ import {
   useTheme,
 } from '@mui/material';
 import { Add as AddIcon, Person as PersonIcon } from '@mui/icons-material';
-
+import peopleGroup from '../../assets/images/people-group.png';
 const HeroSection = () => {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%)',
+        background: 'linear-gradient(135deg, #F7FAFC 0%, #E3FAF0 50%, #EDF2F7 100%)',
         py: { xs: 8, md: 12 },
         minHeight: '600px',
         display: 'flex',
@@ -35,15 +35,26 @@ const HeroSection = () => {
                   lineHeight: 1.2,
                   fontWeight: 700,
                 }}
-              >
-                Find Help or Offer Skills.{' '}
+              > 
+                <Box
+                  component="span"
+                  sx={{ color: theme.palette.title.text }}
+                >
+                  Find Help or Offer Skills.{' '}
+                </Box>{' '}
                 <Box
                   component="span"
                   sx={{ color: theme.palette.primary.main }}
                 >
                   TaskMatch
                 </Box>{' '}
-                Gets It Done.
+                <Box
+                  component="span"
+                  sx={{ color: theme.palette.title.text }}
+                >
+                  Gets It Done.
+                </Box>{' '}
+                
               </Typography>
               <Typography
                 variant="body1"
@@ -121,110 +132,16 @@ const HeroSection = () => {
                 },
               }}
             >
-              <Box
-                sx={{
-                  position: 'relative',
-                  zIndex: 1,
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: 2,
-                  p: 4,
+
+             <img
+                src={peopleGroup}
+                alt="People connecting through TaskMatch"
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'block',
                 }}
-              >
-                {/* People illustrations - Using emoji/icons as placeholders */}
-                <Box
-                  sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    backgroundColor: '#FFE5E5',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2rem',
-                    transform: 'translate(-20px, -10px)',
-                  }}
-                >
-                  👩‍💼
-                </Box>
-                <Box
-                  sx={{
-                    width: 100,
-                    height: 100,
-                    borderRadius: '50%',
-                    backgroundColor: '#E5F3FF',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2.5rem',
-                    transform: 'translate(0px, -30px)',
-                  }}
-                >
-                  👨‍💻
-                </Box>
-                <Box
-                  sx={{
-                    width: 90,
-                    height: 90,
-                    borderRadius: '50%',
-                    backgroundColor: '#FFF5E5',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2.2rem',
-                    transform: 'translate(20px, -5px)',
-                  }}
-                >
-                  👩‍🔧
-                </Box>
-                <Box
-                  sx={{
-                    width: 85,
-                    height: 85,
-                    borderRadius: '50%',
-                    backgroundColor: '#F0FFF0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2.1rem',
-                    transform: 'translate(-40px, 20px)',
-                  }}
-                >
-                  👨‍🍳
-                </Box>
-                <Box
-                  sx={{
-                    width: 95,
-                    height: 95,
-                    borderRadius: '50%',
-                    backgroundColor: '#FFF0F5',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2.3rem',
-                    transform: 'translate(10px, 25px)',
-                  }}
-                >
-                  👩‍🎨
-                </Box>
-                <Box
-                  sx={{
-                    width: 75,
-                    height: 75,
-                    borderRadius: '50%',
-                    backgroundColor: '#F5F0FF',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.9rem',
-                    transform: 'translate(45px, 5px)',
-                  }}
-                >
-                  👨‍🔬
-                </Box>
-              </Box>
+            />
             </Box>
           </Grid>
         </Grid>

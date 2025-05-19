@@ -31,7 +31,7 @@ const initialState = {
       location: 'Manhattan, NY',
       category: 'pets',
       icon: '⭐',
-    },
+    }
   ],
   loading: false,
   error: null,

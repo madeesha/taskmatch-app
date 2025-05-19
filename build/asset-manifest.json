@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/your-repo/static/js/main.cd73fc36.js",
-    "index.html": "/your-repo/index.html",
-    "main.cd73fc36.js.map": "/your-repo/static/js/main.cd73fc36.js.map"
+    "main.js": "/taskmatch-app/static/js/main.cd7ad770.js",
+    "index.html": "/taskmatch-app/index.html",
+    "main.cd7ad770.js.map": "/taskmatch-app/static/js/main.cd7ad770.js.map"
   },
   "entrypoints": [
-    "static/js/main.cd73fc36.js"
+    "static/js/main.cd7ad770.js"
   ]
 }
