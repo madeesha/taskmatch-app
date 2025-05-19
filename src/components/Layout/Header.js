@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation,useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -18,13 +19,16 @@ import {
 
 const Header = () => {
   const theme = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   return (
     <AppBar position="static" elevation={1}>
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box onClick={() => navigate('/')} sx={{ display: 'flex', alignItems: 'center' }}>
             <MenuIcon sx={{ color: theme.palette.title.text, mr: 1 }} />
             <Typography
               variant="h5"
@@ -39,7 +43,8 @@ const Header = () => {
             </Typography>
           </Box>
 
-          {/* Navigation Links */}
+          {/* Navigation Links only on home page*/}
+          {isHomePage && (
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
               <Button
                 sx={{
@@ -89,10 +94,11 @@ const Header = () => {
                 <span style={{ color: theme.palette.primary.black }}>How it Works</span>
                 </Button>
           </Box>
-
-          {/* Auth Buttons */}
+          )}
+          {/* Auth Buttons on HomePage*/}
+          {isHomePage && (
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button
+            <Button onClick={() => navigate('/login-page')}
               sx={{
                 color: theme.palette.title.text,
                 textTransform: 'none',
@@ -101,7 +107,7 @@ const Header = () => {
             >
               Sign Up
             </Button>
-            <Button
+            <Button onClick={() => navigate('/login')}
               variant="contained"
               sx={{
                 backgroundColor: theme.palette.primary.main,
@@ -116,6 +122,7 @@ const Header = () => {
               Log In
             </Button>
           </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

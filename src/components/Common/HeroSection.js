@@ -9,9 +9,11 @@ import {
 } from '@mui/material';
 import { Add as AddIcon, Person as PersonIcon } from '@mui/icons-material';
 import peopleGroup from '../../assets/images/people-group.png';
+import { useNavigate } from 'react-router-dom';
+
 const HeroSection = () => {
   const theme = useTheme();
-
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -71,22 +73,23 @@ const HeroSection = () => {
               </Typography>
               <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
                 <Button
-                  variant="contained"
-                  size="large"
-                  startIcon={<AddIcon />}
-                  sx={{
-                    backgroundColor: theme.palette.primary.main,
-                    color: 'white',
-                    px: 4,
-                    py: 1.5,
-                    fontSize: '1.1rem',
-                    fontWeight: 500,
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.dark,
-                    },
-                  }}
-                >
-                  Post a Task
+                    variant="contained"
+                    size="large"
+                    startIcon={<AddIcon />}
+                    onClick={() => navigate('/post-task')}
+                    sx={{
+                        backgroundColor: theme.palette.primary.main,
+                        color: 'white',
+                        px: 4,
+                        py: 1.5,
+                        fontSize: '1.1rem',
+                        fontWeight: 500,
+                        '&:hover': {
+                        backgroundColor: theme.palette.primary.dark,
+                        },
+                    }}
+                    >
+                    Post a Task
                 </Button>
                 <Button
                   variant="outlined"
