@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/your-repo/static/js/main.cd73fc36.js",
+    "index.html": "/your-repo/index.html",
+    "main.cd73fc36.js.map": "/your-repo/static/js/main.cd73fc36.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.cd73fc36.js"
+  ]
+}
