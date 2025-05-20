@@ -1,142 +1,130 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-// Initial state
-const initialState = {
-  user: null,
-  isAuthenticated: false,
-  tasks: [
+// Create context
+const AppContext = createContext();
+
+/**
+ * AppProvider component for managing global application state
+ * 
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components
+ */
+export const AppProvider = ({ children }) => {
+  // Sample tasks data
+  const [tasks, setTasks] = useState([
     {
       id: 1,
-      title: 'Paint a Bedroom',
-      description: 'Need help painting a 10×12ft bedroom. All materials provided. Flexible timing.',
-      price: '$80',
+      title: 'Paint Living Room Walls',
+      description: 'Need help painting my living room walls. The room is approximately 15x20 feet with 9-foot ceilings. Paint and supplies will be provided.',
+      price: '$180',
       location: 'Brooklyn, NY',
       category: 'paint',
-      icon: '🎨',
     },
     {
       id: 2,
-      title: 'Move Furniture',
-      description: 'Help needed moving a sofa and boxes from storage to apartment. Elevator access.',
-      price: '$60',
+      title: 'Help Moving Furniture',
+      description: 'Need assistance moving furniture from a 1-bedroom apartment to a new location about 5 miles away. Have a few heavy items including a couch and bed frame.',
+      price: '$120',
       location: 'Queens, NY',
       category: 'move',
-      icon: '🚚',
     },
     {
       id: 3,
-      title: 'Dog Walking',
-      description: 'Looking for a dog walker for 2 golden retrievers, weekdays at noon, ongoing job.',
-      price: '$25/hr',
+      title: 'Dog Walking Service',
+      description: 'Looking for someone to walk my dog twice daily while I\'m away for a business trip next week. Medium-sized friendly golden retriever.',
+      price: '$25/day',
       location: 'Manhattan, NY',
       category: 'pets',
-      icon: '⭐',
-    }
-  ],
-  loading: false,
-  error: null,
-};
+    },
+    {
+      id: 4,
+      title: 'Lawn Mowing and Garden Cleanup',
+      description: 'Need someone to mow the lawn and clean up garden debris. The yard is approximately 1/4 acre with some flower beds that need weeding.',
+      price: '$85',
+      location: 'Staten Island, NY',
+      category: 'garden',
+    },
+    {
+      id: 5,
+      title: 'Office Organization Help',
+      description: 'Looking for help organizing my home office. Need assistance with filing papers, organizing office supplies, and setting up an efficient workspace.',
+      price: '$60',
+      location: 'Brooklyn, NY',
+      category: 'organize',
+    },
+    {
+      id: 6,
+      title: 'Website Development',
+      description: 'Need a simple portfolio website built using React. Looking for someone with frontend development experience who can complete the project within 2 weeks.',
+      price: '$450',
+      location: 'Remote',
+      category: 'tech',
+    },
+  ]);
 
-// Action types
-const ActionTypes = {
-  SET_USER: 'SET_USER',
-  SET_LOADING: 'SET_LOADING',
-  SET_ERROR: 'SET_ERROR',
-  ADD_TASK: 'ADD_TASK',
-  UPDATE_TASK: 'UPDATE_TASK',
-  DELETE_TASK: 'DELETE_TASK',
-};
+  // User authentication state (simplified)
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-// Reducer
-const appReducer = (state, action) => {
-  switch (action.type) {
-    case ActionTypes.SET_USER:
-      return {
-        ...state,
-        user: action.payload,
-        isAuthenticated: !!action.payload,
-      };
-    case ActionTypes.SET_LOADING:
-      return {
-        ...state,
-        loading: action.payload,
-      };
-    case ActionTypes.SET_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-      };
-    case ActionTypes.ADD_TASK:
-      return {
-        ...state,
-        tasks: [...state.tasks, action.payload],
-      };
-    case ActionTypes.UPDATE_TASK:
-      return {
-        ...state,
-        tasks: state.tasks.map(task =>
-          task.id === action.payload.id ? action.payload : task
-        ),
-      };
-    case ActionTypes.DELETE_TASK:
-      return {
-        ...state,
-        tasks: state.tasks.filter(task => task.id !== action.payload),
-      };
-    default:
-      return state;
-  }
-};
-
-// Context
-const AppContext = createContext();
-
-// Provider
-export const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
-
-  // Actions
-  const setUser = (user) => {
-    dispatch({ type: ActionTypes.SET_USER, payload: user });
+  // Mock login function
+  const login = (email, password) => {
+    // In a real app, this would make an API call
+    const mockUser = {
+      id: 'user-123',
+      name: 'John Doe',
+      email: email,
+    };
+    
+    setUser(mockUser);
+    setIsAuthenticated(true);
+    return mockUser;
   };
 
-  const setLoading = (loading) => {
-    dispatch({ type: ActionTypes.SET_LOADING, payload: loading });
+  // Mock logout function
+  const logout = () => {
+    setUser(null);
+    setIsAuthenticated(false);
   };
 
-  const setError = (error) => {
-    dispatch({ type: ActionTypes.SET_ERROR, payload: error });
+  // Mock function to add a new task
+  const addTask = (newTask) => {
+    const taskWithId = {
+      ...newTask,
+      id: Date.now(), // Simple way to generate unique IDs
+    };
+    setTasks((prevTasks) => [...prevTasks, taskWithId]);
+    return taskWithId;
   };
 
-  const addTask = (task) => {
-    dispatch({ type: ActionTypes.ADD_TASK, payload: task });
-  };
-
-  const updateTask = (task) => {
-    dispatch({ type: ActionTypes.UPDATE_TASK, payload: task });
-  };
-
-  const deleteTask = (taskId) => {
-    dispatch({ type: ActionTypes.DELETE_TASK, payload: taskId });
-  };
-
-  const value = {
-    ...state,
-    setUser,
-    setLoading,
-    setError,
+  // Context value
+  const contextValue = {
+    tasks,
+    user,
+    isAuthenticated,
+    login,
+    logout,
     addTask,
-    updateTask,
-    deleteTask,
   };
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={contextValue}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
-// Custom hook
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * Custom hook to use the App context
+ * @returns {Object} The context value
+ */
 export const useApp = () => {
   const context = useContext(AppContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useApp must be used within an AppProvider');
   }
   return context;

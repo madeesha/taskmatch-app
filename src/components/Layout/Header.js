@@ -1,14 +1,5 @@
 import React from 'react';
-import { useLocation,useNavigate } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  Container,
-  useTheme,
-} from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Container, useTheme } from '@mui/material';
 import {
   Add as AddIcon,
   Person as PersonIcon,
@@ -16,19 +7,28 @@ import {
   Help as HelpIcon,
   Menu as MenuIcon,
 } from '@mui/icons-material';
+import Button from '../common/Button';
 
+/**
+ * Header component with navigation and authentication buttons
+ */
 const Header = () => {
   const theme = useTheme();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
+
+  // Navigation links configuration
+  const navLinks = [
+    { icon: <AddIcon />, label: 'Post a Task' },
+    { icon: <PersonIcon />, label: 'Register as Tasker' },
+    { icon: <SearchIcon />, label: 'Browse Tasks' },
+    { icon: <HelpIcon />, label: 'How it Works' },
+  ];
 
   return (
     <AppBar position="static" elevation={1}>
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
           {/* Logo */}
-          <Box onClick={() => navigate('/')} sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <MenuIcon sx={{ color: theme.palette.title.text, mr: 1 }} />
             <Typography
               variant="h5"
@@ -36,93 +36,40 @@ const Header = () => {
               sx={{
                 fontWeight: 700,
                 color: theme.palette.title.text,
-                fontSize: '1.75rem',
               }}
             >
               TaskMatch
             </Typography>
           </Box>
 
-          {/* Navigation Links only on home page*/}
-          {isHomePage && (
+          {/* Navigation Links */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+            {navLinks.map((link, index) => (
               <Button
-                sx={{
-                    textTransform: 'none',
-                    fontWeight: 500,
-                }}
-                startIcon={
-                    <AddIcon sx={{ color: theme.palette.title.text }} />
-                }
-                >
-                <span style={{ color: theme.palette.primary.black }}>Post a Task</span>
-                </Button>
-
-                <Button
-                sx={{
-                    textTransform: 'none',
-                    fontWeight: 500,
-                }}
-                startIcon={
-                    <PersonIcon sx={{ color: theme.palette.title.text }} />
-                }
-                >
-                <span style={{ color: theme.palette.primary.black }}>Register as Tasker</span>
-                </Button>
-
-                <Button
-                sx={{
-                    textTransform: 'none',
-                    fontWeight: 500,
-                }}
-                startIcon={
-                    <SearchIcon sx={{ color: theme.palette.title.text }} />
-                }
-                >
-                <span style={{ color: theme.palette.primary.black }}>Browse Tasks</span>
-                </Button>
-
-                <Button
-                sx={{
-                    textTransform: 'none',
-                    fontWeight: 500,
-                }}
-                startIcon={
-                    <HelpIcon sx={{ color: theme.palette.title.text }} />
-                }
-                >
-                <span style={{ color: theme.palette.primary.black }}>How it Works</span>
-                </Button>
+                key={index}
+                variant="text"
+                startIcon={React.cloneElement(link.icon, { 
+                  sx: { color: theme.palette.title.text } 
+                })}
+                sx={{ color: theme.palette.primary.black }}
+              >
+                {link.label}
+              </Button>
+            ))}
           </Box>
-          )}
-          {/* Auth Buttons on HomePage*/}
-          {isHomePage && (
+
+          {/* Auth Buttons */}
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button onClick={() => navigate('/login-page')}
-              sx={{
-                color: theme.palette.title.text,
-                textTransform: 'none',
-                fontWeight: 500,
-              }}
+            <Button 
+              variant="text" 
+              sx={{ color: theme.palette.title.text }}
             >
               Sign Up
             </Button>
-            <Button onClick={() => navigate('/login')}
-              variant="contained"
-              sx={{
-                backgroundColor: theme.palette.primary.main,
-                color: 'white',
-                textTransform: 'none',
-                fontWeight: 500,
-                '&:hover': {
-                  backgroundColor: theme.palette.primary.dark,
-                },
-              }}
-            >
+            <Button variant="primary">
               Log In
             </Button>
           </Box>
-          )}
         </Toolbar>
       </Container>
     </AppBar>

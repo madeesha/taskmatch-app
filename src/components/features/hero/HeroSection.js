@@ -1,19 +1,15 @@
 import React from 'react';
-import {
-  Container,
-  Grid,
-  Typography,
-  Button,
-  Box,
-  useTheme,
-} from '@mui/material';
+import { Container, Grid, Typography, Box, useTheme } from '@mui/material';
 import { Add as AddIcon, Person as PersonIcon } from '@mui/icons-material';
-import peopleGroup from '../../assets/images/people-group.png';
-import { useNavigate } from 'react-router-dom';
+import Button from '../../common/Button';
+import peopleGroup from '../../../assets/images/people-group.png';
 
+/**
+ * Hero section component for the homepage
+ */
 const HeroSection = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -33,7 +29,6 @@ const HeroSection = () => {
                 variant="h1"
                 sx={{
                   mb: 3,
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
                   lineHeight: 1.2,
                   fontWeight: 700,
                 }}
@@ -56,7 +51,6 @@ const HeroSection = () => {
                 >
                   Gets It Done.
                 </Box>{' '}
-                
               </Typography>
               <Typography
                 variant="body1"
@@ -73,40 +67,16 @@ const HeroSection = () => {
               </Typography>
               <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
                 <Button
-                    variant="contained"
-                    size="large"
-                    startIcon={<AddIcon />}
-                    onClick={() => navigate('/post-task')}
-                    sx={{
-                        backgroundColor: theme.palette.primary.main,
-                        color: 'white',
-                        px: 4,
-                        py: 1.5,
-                        fontSize: '1.1rem',
-                        fontWeight: 500,
-                        '&:hover': {
-                        backgroundColor: theme.palette.primary.dark,
-                        },
-                    }}
-                    >
-                    Post a Task
+                  variant="primary"
+                  size="large"
+                  startIcon={<AddIcon />}
+                >
+                  Post a Task
                 </Button>
                 <Button
                   variant="outlined"
                   size="large"
                   startIcon={<PersonIcon />}
-                  sx={{
-                    borderColor: theme.palette.primary.main,
-                    color: theme.palette.primary.main,
-                    px: 4,
-                    py: 1.5,
-                    fontSize: '1.1rem',
-                    fontWeight: 500,
-                    '&:hover': {
-                      borderColor: theme.palette.primary.dark,
-                      backgroundColor: 'rgba(0, 212, 170, 0.04)',
-                    },
-                  }}
                 >
                   Register as Tasker
                 </Button>
@@ -135,16 +105,17 @@ const HeroSection = () => {
                 },
               }}
             >
-
-             <img
+              <img
                 src={peopleGroup}
                 alt="People connecting through TaskMatch"
                 style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  display: 'block',
+                  position: 'relative',
+                  zIndex: 1,
                 }}
-            />
+              />
             </Box>
           </Grid>
         </Grid>

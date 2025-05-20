@@ -1,13 +1,15 @@
-import CssBaseline from '@mui/material/CssBaseline';
+import React from 'react';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './contexts/AppContext';
-import theme from './styles/theme';
+import theme from './theme';
 import Layout from './components/Layout/Layout';
 import HomePage from './components/Pages/HomePage';
-import PostTask from './components/Pages/task';
-import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-function App() {
+import { AppProvider } from './contexts/AppContext';
+
+/**
+ * Main App component that sets up providers and renders the main layout
+ */
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -16,13 +18,14 @@ function App() {
          <Routes>
             <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/post-task" element={<PostTask />} />
+            <Route path="/post-task" element={<HomePage />} />
             </Route>
         </Routes>
         </Router>
       </AppProvider>
     </ThemeProvider>
   );
-}
+};
+
 export default App;
 
