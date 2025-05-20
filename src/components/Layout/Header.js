@@ -8,12 +8,17 @@ import {
   Menu as MenuIcon,
 } from '@mui/icons-material';
 import Button from '../common/Button';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Header component with navigation and authentication buttons
  */
 const Header = () => {
   const theme = useTheme();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  const navigate = useNavigate();
 
   // Navigation links configuration
   const navLinks = [
@@ -28,7 +33,7 @@ const Header = () => {
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box onClick={() => navigate('/')} sx={{ display: 'flex', alignItems: 'center' }}>
             <MenuIcon sx={{ color: theme.palette.title.text, mr: 1 }} />
             <Typography
               variant="h5"
@@ -41,8 +46,8 @@ const Header = () => {
               TaskMatch
             </Typography>
           </Box>
-
-          {/* Navigation Links */}
+          {/* Render rest only on home page */}
+          {isHomePage && (
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
             {navLinks.map((link, index) => (
               <Button
@@ -56,9 +61,10 @@ const Header = () => {
                 {link.label}
               </Button>
             ))}
-          </Box>
+          </Box>)}
 
           {/* Auth Buttons */}
+          {isHomePage && (
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Button 
               variant="text" 
@@ -69,7 +75,7 @@ const Header = () => {
             <Button variant="primary">
               Log In
             </Button>
-          </Box>
+          </Box> )} 
         </Toolbar>
       </Container>
     </AppBar>

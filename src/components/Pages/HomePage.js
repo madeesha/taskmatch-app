@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, useTheme } from '@mui/material';
 import Button from '../common/Button';
-import HeroSection from '../features/hero/HeroSection';
+import HeroSection from '../features/hero/HeroSection1';
 import TaskGrid from '../features/tasks/TaskGrid';
 import SectionHeading from '../common/SectionHeading';
 import { useApp } from '../../contexts/AppContext';
