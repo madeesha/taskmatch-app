@@ -16,7 +16,6 @@ import Button from '../common/Button';
 import TextField from '../common/TextField';
 import SectionHeading from '../common/SectionHeading';
 import IconBox from '../common/IconBox';
-import { useApp } from '../../contexts/AppContext';
 
 /**
  * PostTask component for creating new tasks

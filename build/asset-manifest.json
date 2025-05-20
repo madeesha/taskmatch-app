@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/taskmatch-app/static/js/main.a3b491ef.js",
+    "main.js": "/taskmatch-app/static/js/main.ac64e470.js",
     "static/media/people-group.png": "/taskmatch-app/static/media/people-group.f1803dee60f96a6253ac.png",
     "index.html": "/taskmatch-app/index.html",
-    "main.a3b491ef.js.map": "/taskmatch-app/static/js/main.a3b491ef.js.map"
+    "main.ac64e470.js.map": "/taskmatch-app/static/js/main.ac64e470.js.map"
   },
   "entrypoints": [
-    "static/js/main.a3b491ef.js"
+    "static/js/main.ac64e470.js"
   ]
 }
