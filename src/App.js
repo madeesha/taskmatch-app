@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import theme from './theme';
 import Layout from './components/Layout/Layout';
 import HomePage from './components/Pages/HomePage';
+import PostTaskPage from './components/Pages/PostTask';
 import { AppProvider } from './contexts/AppContext';
 
 /**
@@ -18,7 +19,7 @@ const App = () => {
          <Routes>
             <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/post-task" element={<HomePage />} />
+            <Route path="/post-task" element={<PostTaskPage />} />
             </Route>
         </Routes>
         </Router>
