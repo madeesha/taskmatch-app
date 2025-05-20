@@ -23,7 +23,6 @@ import { useApp } from '../../contexts/AppContext';
  */
 const PostTask = () => {
   const theme = useTheme();
-  const { addTask } = useApp();
   
   // Form state
   const [taskDescription, setTaskDescription] = useState('');
