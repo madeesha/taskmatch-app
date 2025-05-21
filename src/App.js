@@ -8,6 +8,8 @@ import PostTaskPage from './components/Pages/PostTask';
 import TaskLocationPage from './components/Pages/TaskLocationPage';
 import TaskBudgetPage from './components/Pages/TaskBudgetPage';
 import TaskDetails from './components/Pages/TaskDetails';
+import LoginPage from './components/Pages/LoginPage';
+import SignUpPage from './components/Pages/SignUpPage';
 import { AppProvider } from './contexts/AppContext';
 
 const App = () => {
@@ -31,6 +33,8 @@ const App = () => {
               <Route path="/task-location" element={<TaskLocationPage />} />
               <Route path="/task-details" element={<TaskDetails />} />
               <Route path="/task-budget" element={<TaskBudgetPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
             </Route>
           </Routes>
         </Router>

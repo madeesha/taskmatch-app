@@ -67,13 +67,13 @@ const Header = () => {
           {/* Auth Buttons */}
           {isHomePage && (
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button 
+            <Button onClick={() => navigate('/login')}
               variant="text" 
               sx={{ color: theme.palette.title.text }}
             >
               Sign Up
             </Button>
-            <Button variant="primary">
+            <Button onClick={() => navigate('/signup')} variant="primary">
               Log In
             </Button>
           </Box> )} 
