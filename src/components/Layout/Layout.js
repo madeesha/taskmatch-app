@@ -11,7 +11,7 @@ const Layout = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Header />
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box component="main" sx={{ flex: 1 }}>
         <Outlet /> {/* ✅ This renders the route-specific content like HomePage */}
       </Box>
       <Footer />

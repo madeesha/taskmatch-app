@@ -22,10 +22,10 @@ const Header = () => {
 
   // Navigation links configuration
   const navLinks = [
-    { icon: <AddIcon />, label: 'Post a Task' },
-    { icon: <PersonIcon />, label: 'Register as Tasker' },
-    { icon: <SearchIcon />, label: 'Browse Tasks' },
-    { icon: <HelpIcon />, label: 'How it Works' },
+    { icon: <AddIcon />, label: 'Post a Task', path: '/post-task'},
+    { icon: <PersonIcon />, label: 'Register as Tasker', path: '/' },
+    { icon: <SearchIcon />, label: 'Browse Tasks', path: '/' },
+    { icon: <HelpIcon />, label: 'How it Works', path: '/' },
   ];
 
   return (
@@ -51,6 +51,7 @@ const Header = () => {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
             {navLinks.map((link, index) => (
               <Button
+                onClick={() => navigate(link.path)}
                 key={index}
                 variant="text"
                 startIcon={React.cloneElement(link.icon, { 

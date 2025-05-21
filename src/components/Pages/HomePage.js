@@ -5,6 +5,7 @@ import HeroSection from '../features/hero/HeroSection1';
 import TaskGrid from '../features/tasks/TaskGrid';
 import SectionHeading from '../common/SectionHeading';
 import { useApp } from '../../contexts/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * HomePage component that displays the main landing page content
@@ -12,6 +13,7 @@ import { useApp } from '../../contexts/AppContext';
 const HomePage = () => {
   const theme = useTheme();
   const { tasks } = useApp();
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ backgroundColor: theme.palette.background.default }}>

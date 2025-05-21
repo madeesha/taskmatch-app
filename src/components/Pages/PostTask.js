@@ -16,36 +16,33 @@ import Button from '../common/Button';
 import TextField from '../common/TextField';
 import SectionHeading from '../common/SectionHeading';
 import IconBox from '../common/IconBox';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-/**
- * PostTask component for creating new tasks
- */
 const PostTask = () => {
   const theme = useTheme();
-  
-  // Form state
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [taskDescription, setTaskDescription] = useState('');
   const [selectedDate, setSelectedDate] = useState('flexible');
   const [needsSpecificTime, setNeedsSpecificTime] = useState(false);
 
-  // Steps in the task creation process
   const steps = [
-    { label: 'Title & Date', isActive: true },
-    { label: 'Location', isActive: false },
-    { label: 'Details', isActive: false },
-    { label: 'Budget', isActive: false }
+    { label: 'Title & Date', path: '/post-task' },
+    { label: 'Location', path: '/task-location' },
+    { label: 'Details', path: '/task-details' },
+    { label: 'Budget', path: '/task-budget' }
   ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', { taskDescription, selectedDate, needsSpecificTime });
-    // Would move to next step in a complete implementation
+    // Here you'd usually advance to the next route
+    navigate('/task-location');
   };
 
   return (
     <Container maxWidth="xl" sx={{ py: 6 }}>
       <Grid container spacing={4}>
-        {/* Left Sidebar */}
         <Grid item xs={12} md={3}>
           <Box
             sx={{
@@ -74,33 +71,36 @@ const PostTask = () => {
                 Post a task
               </Typography>
             </Box>
-            
+
             <Box component="nav" sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              {steps.map((step, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    p: 2,
-                    borderRadius: 2,
-                    cursor: 'pointer',
-                    backgroundColor: step.isActive 
-                      ? theme.palette.primary.light 
-                      : 'transparent',
-                    color: step.isActive 
-                      ? theme.palette.primary.main 
-                      : theme.palette.text.secondary,
-                    fontWeight: step.isActive ? 600 : 400,
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <Typography variant="body1">{step.label}</Typography>
-                </Box>
-              ))}
+              {steps.map((step, index) => {
+                const isActive = location.pathname === step.path;
+                return (
+                  <Box
+                    key={index}
+                    onClick={() => navigate(step.path)}
+                    sx={{
+                      p: 2,
+                      borderRadius: 2,
+                      cursor: 'pointer',
+                      backgroundColor: isActive 
+                        ? theme.palette.primary.light 
+                        : 'transparent',
+                      color: isActive 
+                        ? theme.palette.primary.main 
+                        : theme.palette.text.secondary,
+                      fontWeight: isActive ? 600 : 400,
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    <Typography variant="body1">{step.label}</Typography>
+                  </Box>
+                );
+              })}
             </Box>
           </Box>
         </Grid>
 
-        {/* Main Form Area */}
         <Grid item xs={12} md={9}>
           <Box
             sx={{
@@ -117,7 +117,6 @@ const PostTask = () => {
             />
             
             <Box component="form" onSubmit={handleSubmit}>
-              {/* Task Description */}
               <Box sx={{ mb: 4 }}>
                 <TextField
                   label="In a few words, what do you need done?"
@@ -131,7 +130,6 @@ const PostTask = () => {
                 />
               </Box>
 
-              {/* Date Selection */}
               <Box sx={{ mb: 4 }}>
                 <Typography
                   variant="subtitle1"
@@ -169,7 +167,6 @@ const PostTask = () => {
                   </Button>
                 </Box>
 
-                {/* Specific Time Checkbox */}
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -187,7 +184,6 @@ const PostTask = () => {
                 />
               </Box>
 
-              {/* Next Button */}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 6 }}>
                 <Button
                   type="submit"
