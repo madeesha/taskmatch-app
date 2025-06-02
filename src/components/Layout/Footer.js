@@ -14,39 +14,61 @@ import {
   Instagram,
   LinkedIn,
 } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Footer component with links and social media
  */
 const Footer = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
   
   // Footer sections configuration
   const footerSections = [
     {
-      title: 'About Us',
-      links: ['Our Story', 'How It Works', 'Careers', 'Press'],
+      title: t('footer.sections.aboutUs.title'),
+      links: [
+        { label: t('footer.sections.aboutUs.links.ourStory'), href: '#' },
+        { label: t('footer.sections.aboutUs.links.howItWorks'), href: '#' },
+        { label: t('footer.sections.aboutUs.links.careers'), href: '#' },
+        { label: t('footer.sections.aboutUs.links.press'), href: '#' },
+      ],
     },
     {
-      title: 'For Taskers',
-      links: ['Why TaskMatch', 'Get Started', 'Success Stories', 'Safety'],
+      title: t('footer.sections.forTaskers.title'),
+      links: [
+        { label: t('footer.sections.forTaskers.links.whyTaskMatch'), href: '#' },
+        { label: t('footer.sections.forTaskers.links.getStarted'), href: '#' },
+        { label: t('footer.sections.forTaskers.links.successStories'), href: '#' },
+        { label: t('footer.sections.forTaskers.links.safety'), href: '#' },
+      ],
     },
     {
-      title: 'For Clients',
-      links: ['Post a Task', 'Browse Taskers', 'TaskMatch Guarantee', 'Business Solutions'],
+      title: t('footer.sections.forClients.title'),
+      links: [
+        { label: t('footer.sections.forClients.links.postTask'), href: '#' },
+        { label: t('footer.sections.forClients.links.browseTaskers'), href: '#' },
+        { label: t('footer.sections.forClients.links.guarantee'), href: '#' },
+        { label: t('footer.sections.forClients.links.businessSolutions'), href: '#' },
+      ],
     },
     {
-      title: 'Support',
-      links: ['Help Center', 'Contact Us', 'Safety Guidelines', 'Trust & Quality'],
+      title: t('footer.sections.support.title'),
+      links: [
+        { label: t('footer.sections.support.links.helpCenter'), href: '#' },
+        { label: t('footer.sections.support.links.contactUs'), href: '#' },
+        { label: t('footer.sections.support.links.safetyGuidelines'), href: '#' },
+        { label: t('footer.sections.support.links.trustQuality'), href: '#' },
+      ],
     },
   ];
 
   // Social media icons
   const socialIcons = [
-    { icon: <Facebook />, name: 'Facebook' },
-    { icon: <Twitter />, name: 'Twitter' },
-    { icon: <Instagram />, name: 'Instagram' },
-    { icon: <LinkedIn />, name: 'LinkedIn' },
+    { icon: <Facebook />, name: t('footer.socialMedia.facebook'), href: '#' },
+    { icon: <Twitter />, name: t('footer.socialMedia.twitter'), href: '#' },
+    { icon: <Instagram />, name: t('footer.socialMedia.instagram'), href: '#' },
+    { icon: <LinkedIn />, name: t('footer.socialMedia.linkedin'), href: '#' },
   ];
 
   return (
@@ -70,7 +92,7 @@ const Footer = () => {
                 mb: 2,
               }}
             >
-              TaskMatch
+              {t('footer.logo')}
             </Typography>
             <Typography
               variant="body2"
@@ -80,14 +102,13 @@ const Footer = () => {
                 maxWidth: 350,
               }}
             >
-              Connect with trusted taskers to get your to-do list done.
-              TaskMatch helps you find the right person for any task, big or small.
+              {t('footer.description')}
             </Typography>
             <Box sx={{ display: 'flex', gap: 2 }}>
               {socialIcons.map((social, index) => (
                 <Link
                   key={index}
-                  href="#"
+                  href={social.href}
                   aria-label={social.name}
                   sx={{
                     color: theme.palette.text.secondary,
@@ -126,7 +147,7 @@ const Footer = () => {
                 {section.links.map((link, linkIndex) => (
                   <Box component="li" key={linkIndex} sx={{ mb: 1 }}>
                     <Link
-                      href="#"
+                      href={link.href}
                       underline="hover"
                       sx={{
                         color: theme.palette.text.secondary,
@@ -135,7 +156,7 @@ const Footer = () => {
                         },
                       }}
                     >
-                      {link}
+                      {link.label}
                     </Link>
                   </Box>
                 ))}
@@ -156,17 +177,17 @@ const Footer = () => {
           }}
         >
           <Typography variant="body2" color="text.secondary">
-            © {new Date().getFullYear()} TaskMatch. All rights reserved.
+            {t('footer.legal.copyright', { year: new Date().getFullYear() })}
           </Typography>
           <Box sx={{ display: 'flex', gap: 3 }}>
             <Link href="#" underline="hover" color="text.secondary">
-              Privacy Policy
+              {t('footer.legal.privacyPolicy')}
             </Link>
             <Link href="#" underline="hover" color="text.secondary">
-              Terms of Service
+              {t('footer.legal.termsOfService')}
             </Link>
             <Link href="#" underline="hover" color="text.secondary">
-              Cookies
+              {t('footer.legal.cookies')}
             </Link>
           </Box>
         </Box>

@@ -1,0 +1,79 @@
+{
+  "header": {
+    "logo": "TaskMatch",
+    "navigation": {
+      "postTask": "Post a Task",
+      "registerTasker": "Register as Tasker",
+      "browseTasks": "Browse Tasks",
+      "howItWorks": "How it Works"
+    },
+    "auth": {
+      "signUp": "Sign Up",
+      "logIn": "Log In"
+    }
+  },
+  "footer": {
+    "logo": "TaskMatch",
+    "description": "Connect with trusted taskers to get your to-do list done. TaskMatch helps you find the right person for any task, big or small.",
+    "sections": {
+      "aboutUs": {
+        "title": "About Us",
+        "links": {
+          "ourStory": "Our Story",
+          "howItWorks": "How It Works",
+          "careers": "Careers",
+          "press": "Press"
+        }
+      },
+      "forTaskers": {
+        "title": "For Taskers",
+        "links": {
+          "whyTaskMatch": "Why TaskMatch",
+          "getStarted": "Get Started",
+          "successStories": "Success Stories",
+          "safety": "Safety"
+        }
+      },
+      "forClients": {
+        "title": "For Clients",
+        "links": {
+          "postTask": "Post a Task",
+          "browseTaskers": "Browse Taskers",
+          "guarantee": "TaskMatch Guarantee",
+          "businessSolutions": "Business Solutions"
+        }
+      },
+      "support": {
+        "title": "Support",
+        "links": {
+          "helpCenter": "Help Center",
+          "contactUs": "Contact Us",
+          "safetyGuidelines": "Safety Guidelines",
+          "trustQuality": "Trust & Quality"
+        }
+      }
+    },
+    "legal": {
+      "copyright": "© {{year}} TaskMatch. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookies": "Cookies"
+    },
+    "socialMedia": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm"
+  }
+}

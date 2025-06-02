@@ -11,6 +11,7 @@ import TaskDetails from './components/Pages/TaskDetails';
 import LoginPage from './components/Pages/LoginPage';
 import SignUpPage from './components/Pages/SignUpPage';
 import { AppProvider } from './contexts/AppContext';
+import './i18n'; // Import i18n configuration
 
 const App = () => {
   return (

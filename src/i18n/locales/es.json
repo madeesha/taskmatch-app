@@ -1,0 +1,79 @@
+{
+  "header": {
+    "logo": "TaskMatch",
+    "navigation": {
+      "postTask": "කාර්යයක් පළ කරන්න",
+      "registerTasker": "කාර්ය කරුවෙකු ලෙස ලියාපදිංචි වන්න",
+      "browseTasks": "කාර්ය පිරික්සන්න",
+      "howItWorks": "එය ක්‍රියා කරන ආකාරය"
+    },
+    "auth": {
+      "signUp": "ලියාපදිංචි වන්න",
+      "logIn": "පුරනය වන්න"
+    }
+  },
+  "footer": {
+    "logo": "TaskMatch",
+    "description": "ඔබේ කාර්ය ලැයිස්තුව සම්පූර්ණ කිරීමට විශ්වසනීය කාර්ය කරුවන් සමඟ සම්බන්ධ වන්න. TaskMatch ඔබට ඕනෑම කාර්යයක් සඳහා සුදුසු පුද්ගලයා සොයා ගැනීමට උපකාර කරයි.",
+    "sections": {
+      "aboutUs": {
+        "title": "අප ගැන",
+        "links": {
+          "ourStory": "අපේ කතාව",
+          "howItWorks": "එය ක්‍රියා කරන ආකාරය",
+          "careers": "රැකියා අවස්ථා",
+          "press": "මාධ්‍ය"
+        }
+      },
+      "forTaskers": {
+        "title": "කාර්ය කරුවන් සඳහා",
+        "links": {
+          "whyTaskMatch": "ඇයි TaskMatch",
+          "getStarted": "ආරම්භ කරන්න",
+          "successStories": "සාර්ථක කතා",
+          "safety": "ආරක්ෂාව"
+        }
+      },
+      "forClients": {
+        "title": "සේවාදායකයින් සඳහා",
+        "links": {
+          "postTask": "කාර්යයක් පළ කරන්න",
+          "browseTaskers": "කාර්ය කරුවන් පිරික්සන්න",
+          "guarantee": "TaskMatch සහතිකය",
+          "businessSolutions": "ව්‍යාපාරික විසඳුම්"
+        }
+      },
+      "support": {
+        "title": "සහාය",
+        "links": {
+          "helpCenter": "උදව් මධ්‍යස්ථානය",
+          "contactUs": "අප සම්බන්ධ කරන්න",
+          "safetyGuidelines": "ආරක්ෂක මාර්ගෝපදේශ",
+          "trustQuality": "විශ්වාසය සහ ගුණාත්මකභාවය"
+        }
+      }
+    },
+    "legal": {
+      "copyright": "© {{year}} TaskMatch. සියලුම හිමිකම් ආරක්ෂිතයි.",
+      "privacyPolicy": "පුද්ගලිකත්ව ප්‍රතිපත්තිය",
+      "termsOfService": "සේවා නියමයන්",
+      "cookies": "කුකීස්"
+    },
+    "socialMedia": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "common": {
+    "loading": "පූරණය වෙමින්...",
+    "error": "දෝෂයක් ඇතිවිය",
+    "success": "සාර්ථකයි!",
+    "cancel": "අවලංගු කරන්න",
+    "save": "සුරකින්න",
+    "edit": "සංස්කරණය කරන්න",
+    "delete": "මකා දමන්න",
+    "confirm": "තහවුරු කරන්න"
+  }
+}

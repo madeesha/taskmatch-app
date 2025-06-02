@@ -8,8 +8,10 @@ import {
   Menu as MenuIcon,
 } from '@mui/icons-material';
 import Button from '../common/Button';
+import LanguageSwitcher from '../common/LanguageSwitcher';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Header component with navigation and authentication buttons
@@ -19,13 +21,14 @@ const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Navigation links configuration
   const navLinks = [
-    { icon: <AddIcon />, label: 'Post a Task', path: '/post-task'},
-    { icon: <PersonIcon />, label: 'Register as Tasker', path: '/' },
-    { icon: <SearchIcon />, label: 'Browse Tasks', path: '/' },
-    { icon: <HelpIcon />, label: 'How it Works', path: '/' },
+    { icon: <AddIcon />, label: t('header.navigation.postTask'), path: '/post-task'},
+    { icon: <PersonIcon />, label: t('header.navigation.registerTasker'), path: '/' },
+    { icon: <SearchIcon />, label: t('header.navigation.browseTasks'), path: '/' },
+    { icon: <HelpIcon />, label: t('header.navigation.howItWorks'), path: '/' },
   ];
 
   return (
@@ -33,7 +36,7 @@ const Header = () => {
       <Container maxWidth="xl">
         <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
           {/* Logo */}
-          <Box onClick={() => navigate('/')} sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box onClick={() => navigate('/')} sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
             <MenuIcon sx={{ color: theme.palette.title.text, mr: 1 }} />
             <Typography
               variant="h5"
@@ -43,40 +46,47 @@ const Header = () => {
                 color: theme.palette.title.text,
               }}
             >
-              TaskMatch
+              {t('header.logo')}
             </Typography>
           </Box>
+          
           {/* Render rest only on home page */}
           {isHomePage && (
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
-            {navLinks.map((link, index) => (
-              <Button
-                onClick={() => navigate(link.path)}
-                key={index}
-                variant="text"
-                startIcon={React.cloneElement(link.icon, { 
-                  sx: { color: theme.palette.title.text } 
-                })}
-                sx={{ color: theme.palette.primary.black }}
-              >
-                {link.label}
-              </Button>
-            ))}
-          </Box>)}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+              {navLinks.map((link, index) => (
+                <Button
+                  onClick={() => navigate(link.path)}
+                  key={index}
+                  variant="text"
+                  startIcon={React.cloneElement(link.icon, { 
+                    sx: { color: theme.palette.title.text } 
+                  })}
+                  sx={{ color: theme.palette.primary.black }}
+                >
+                  {link.label}
+                </Button>
+              ))}
+            </Box>
+          )}
 
-          {/* Auth Buttons */}
-          {isHomePage && (
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Button onClick={() => navigate('/login')}
-              variant="text" 
-              sx={{ color: theme.palette.title.text }}
-            >
-              Sign Up
-            </Button>
-            <Button onClick={() => navigate('/signup')} variant="primary">
-              Log In
-            </Button>
-          </Box> )} 
+          {/* Auth Buttons and Language Switcher */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <LanguageSwitcher color={theme.palette.title.text} />
+            {isHomePage && (
+              <>
+                <Button 
+                  onClick={() => navigate('/login')}
+                  variant="text" 
+                  sx={{ color: theme.palette.title.text }}
+                >
+                  {t('header.auth.signUp')}
+                </Button>
+                <Button onClick={() => navigate('/signup')} variant="primary">
+                  {t('header.auth.logIn')}
+                </Button>
+              </>
+            )}
+          </Box> 
         </Toolbar>
       </Container>
     </AppBar>
